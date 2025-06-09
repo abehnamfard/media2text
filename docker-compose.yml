@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  whisper-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      # You can mount a volume to cache the downloaded models
+      # This will prevent re-downloading the model every time you rebuild the container
+      - whisper_models:/root/.cache/huggingface/hub
+    # --- UNCOMMENT FOR NVIDIA GPU SUPPORT ---
+    # Make sure you have the NVIDIA Container Toolkit installed.
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+volumes:
+  whisper_models:
