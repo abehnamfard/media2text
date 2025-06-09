@@ -106,7 +106,6 @@ cython_debug/
 
 # Environment variables
 .env
-.env.*
 
 # Docker
 docker-compose.override.yml
