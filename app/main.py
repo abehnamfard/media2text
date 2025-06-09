@@ -18,8 +18,7 @@ async def lifespan(app: FastAPI):
     # --- Startup ---
     logger.info("Application startup...")
     
-    # The main process no longer loads the model.
-    # Instead, we provide an initializer function to the ProcessPoolExecutor.
+    # We provide an initializer function to the ProcessPoolExecutor.
     # This function (transcription_service.init_model) will be called
     # for each worker process when it's created.
     app.state.process_pool = ProcessPoolExecutor(
