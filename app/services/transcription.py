@@ -51,7 +51,7 @@ def transcribe_audio(audio_path: str) -> dict:
 
     logger.info(f"[Worker PID: {pid}] Starting transcription for {audio_path}...")
     try:
-        segments, info = _model.transcribe(audio_path, language='fa', task='transcribe', beam_size=5)
+        segments, info = _model.transcribe(audio_path, task='transcribe', beam_size=5)
 
         logger.info(f"Detected language '{info.language}' with probability {info.language_probability}")
 
